@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --color-ink: #0a0a0f;
+  --color-ink-soft: #1a1a2e;
+  --color-surface: #f7f5f0;
+  --color-surface-alt: #efecea;
+  --color-border: #d8d4cc;
+  --color-accent: #e63946;
+  --color-accent-dim: #c1121f;
+  --color-accent-soft: #ffeaea;
+  --color-muted: #8a8580;
+  --color-success: #2d6a4f;
+  --color-success-soft: #d8f3dc;
+
+  --radius-card: 2px;
+  --shadow-brutal: 4px 4px 0px #0a0a0f;
+  --shadow-brutal-sm: 2px 2px 0px #0a0a0f;
+  --shadow-brutal-lg: 8px 8px 0px #0a0a0f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* Brutal card style */
+.card-brutal {
+  border: 2px solid var(--color-ink);
+  box-shadow: var(--shadow-brutal);
+  background: white;
+}
+
+/* Input style */
+.input-brutal {
+  border: 2px solid var(--color-ink);
+  background: var(--color-surface);
+  font-family: var(--font-display);
+  transition: box-shadow 0.15s ease;
+  outline: none;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.input-brutal:focus {
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.input-brutal::placeholder {
+  color: var(--color-muted);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--color-accent);
+  color: white;
+  border: 2px solid var(--color-ink);
+  box-shadow: var(--shadow-brutal-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-primary:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--color-ink);
+}
+
+.btn-primary:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--color-ink);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  box-shadow: var(--shadow-brutal-sm);
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  cursor: pointer;
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-ghost:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px var(--color-ink);
+}
+
+.btn-ghost:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--color-ink);
+}
+
+/* Page transitions */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: fadeSlideIn 0.3s ease forwards;
+}
+
+/* Noise texture overlay */
+.noise-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
