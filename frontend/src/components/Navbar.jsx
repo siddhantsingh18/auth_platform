@@ -4,6 +4,7 @@ import { LogOut, User, LayoutDashboard, Menu, X } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+
 export default function Navbar() {
   const { user, logout } = useAuth();
   const location = useLocation();
@@ -12,7 +13,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     logout();
-    toast.success("Logged out successfully");
+    toast.success("Logged out successfully ");
     navigate("/");
     setMobileOpen(false);
   };
